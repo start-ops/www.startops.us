@@ -1,18 +1,47 @@
 ---
+const {smol} = Astro.props;
 ---
-# TODO: replace with a proper logo
-<p class="startops-logo">StartOps</p>
+<section>
+	<div class="startops-logo-card">
+		<div class="startops-logo-image">
+			<img src="/assets/startops-logo.png" alt="StartOps logo"/>
+		</div>
+		<div class="startops-logo-text"><a href="/">StartOps</a></div>
+	</div>
+	
+</section>
+
 
 <style>
-	.startops-logo {
-		width: fit-content;
-		margin: 0;
-		font-family: var(--theme-font-family-serif);
-    font-size: var(--font-size-md);
+	a:link {
+		text-decoration: none;
+	}
+	a:visited {
+		text-decoration: none;
+	}
+	.startops-logo-image {
+		grid-column: 1;
+		grid-row: 1;
+		object-fit: contain;
+		background-color: var(--theme-primary);
+		border-radius: 1rem; 
+	}
+	.startops-logo-text {
+		grid-column-start: 2;
+		grid-column-end: 3;
+		grid-row: 1;
+		margin: auto;
+		width: 100%;
+		font-family: var(--theme-font-family-sans);
+    font-size: 3rem;
 		color: inherit;
 	}
-	.startops-logo:hover {
-		text-decoration: underline;
-		cursor: pointer;
+	.startops-logo-card {
+		display: grid;
+		grid-template-columns: repeat(3, var(--header-height));
+		grid-gap: 1rem;
+		width: (3 * var(--header-height));
+		height: var(--header-height);
+		color: var(--theme-on-bg);
 	}
 </style>

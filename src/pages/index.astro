@@ -1,102 +1,74 @@
 ---
-import { Container, FeatureCard } from '@odyssey-theme/components';
+import {
+  AnnouncementBar,
+	ThreeColumnTextSection,
+  CtaCardSection
+} from '@odyssey-theme/components';
+import Button from '../components/buttons/Button.astro';
 import Layout from '../layouts/Page.astro';
-import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import CustomerQuoteSection from '../components/sections/CustomerQuoteSection.astro';
+import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
+
+const seo = {
+	title: 'Dev-Ops for Start-Ups | StartOps',
+	description: 'Build what you need today so that you can outmaneuver your competition.',
+};
 ---
 
-<Layout>
-	<HomeHeroSection />
-	<Container>
-		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
-			<p>
-				Use one of our preconfigured landing pages to jumpstart your website or
-				ad campaign.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/landing-pages/landing-1"
-					imgSrc="/assets/images/home/screenshots/landing-1.png"
-					title="Landing Page 1"
-				/>
-				<FeatureCard
-					href="/landing-pages/landing-2"
-					imgSrc="/assets/images/home/screenshots/landing-2.png"
-					title="Landing Page 2"
-				/>
-			</div>
-		</section>
-	</Container>
+<!-- <AnnouncementBar text="Read Our Latest Blog Post" href="/blog/posts/remote-work-mental-health/" slot="announcement-bar"/>
+-->
+<Layout seo={seo} >
+	<TextAndImageHero reversed>
+		<div slot="text-container">
+			<h1>Dev-Ops for Start-Ups</h1>
+			<p>Build what you need today so that you can outmaneuver your competition.</p>
+		</div>
+		<picture slot="image-container">
+			<img
+				src="/assets/images/home/sketch-hero.jpg"
+				alt="Astro Odyssee"
+				id="home-hero-image"
+			/>
+		</picture>
+	</TextAndImageHero>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
-			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/company/about"
-					imgSrc="/assets/images/home/screenshots/about.png"
-					title="About Page"
-				/>
-				<FeatureCard
-					href="/company/contact"
-					imgSrc="/assets/images/home/screenshots/contact.png"
-					title="Contact Page"
-				/>
-				<FeatureCard
-					href="/blog/"
-					imgSrc="/assets/images/home/screenshots/blog.png"
-					title="Blog Page"
-				/>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					imgSrc="/assets/images/home/screenshots/blog-post.png"
-					title="Blog Post"
-				/>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal.png"
-					title="Legal Page"
-				/>
-			</div>
-		</section>
-	</Container>
+	<CustomerQuoteSection
+		quoteText=" The Preview and Deploy system that StartOps built allows us to deploy as soon as a feature is ready. That means I get to build fast and fix fast. That keeps my customers happy, and that keeps me happy."
+		customerName="Kris Tryber, CEO"
+		customerLink="https://exofreight.com/"
+		customerLogo="https://uploads-ssl.webflow.com/62a3e8182500bf35493c6a35/62a3e8182500bf40d53c6a82_Frame%20264.svg"
+	/>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started.png"
-					title="Get Started"
-				/>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide.png"
-					title="Style Guide"
-				/>
-			</div>
-		</section>
-	</Container>
+	<ThreeColumnTextSection>
+		<div slot="column-1-body">
+			<h2>Focus on what matters today.</h2>
+			<p>
+				Use our Capabilities Matrix to plan your DevOps practice.
+			</p>
+		</div>
+		<Button href="capabilities-matrix" slot="column-1-cta" disabled>Coming Soon</Button>
+		<div slot="column-2-body">
+			<h2>Navigate the bleeding edge.</h2>
+			<p>
+				Use our Technology Radar to make sense of the latest trends.
+			</p>
+		</div>
+		<Button href='technology-radar' slot="column-2-cta" outlined disabled>Coming Soon</Button>
+		<div slot="column-3-body">
+			<h2>Adapt what works.</h2>
+			<p>
+				Use our open-source software and example templates to fit your specific needs.
+			</p>
+		</div>
+		<Button href="https://github.com/start-ops" slot="column-3-cta" newTab>GitHub</Button>
+	</ThreeColumnTextSection>
+
+  <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+    <h2>Let's talk speed.</h2>
+		<p>You have limited time and resources.</p>
+		<p>Let us build and operate an infrastructure that is as responsive as your company is fast.</p>
+    <Button href="/contact" materialIcon="chevron_right">Schedule a free consultation</Button>
+  </CtaCardSection>
+
 </Layout>
 
-<style>
-	.feature-card__section {
-		margin: var(--section-margin) auto;
-	}
-	.feature-card__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
-	}
-	@media (max-width: 768px) {
-		.feature-card__grid {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
