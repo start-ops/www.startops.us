@@ -1,0 +1,36 @@
+---
+const {quoteText, customerName, customerLink, customerLogo} = Astro.props;
+---
+
+<section class="customer-quote__section">
+  <blockquote>"{quoteText}"</blockquote>
+  <p>&mdash; {customerName}</p>
+  <a href={customerLink} target="_blank">
+    <img src={customerLogo} alt={customerName + " logo"} class="customer-quote__logo" />
+  </a>
+</section>
+
+  <style>
+.customer-quote__logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 150px;
+  max-height: 100px;
+}
+.customer-quote__section {
+  margin: calc(var(--section-margin) * 2) auto;
+  padding: 3rem;
+  background-color: var(--theme-surface-1);
+  text-align: center;
+  max-width: var(--container-max-width-narrow);
+}
+.customer-quote__section blockquote {
+  padding: 0;
+  border: none;
+  font-size: var(--font-size-md);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.8;
+}
+</style>

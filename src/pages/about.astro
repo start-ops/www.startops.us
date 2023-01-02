@@ -1,0 +1,46 @@
+---
+import { StickyTextImageSection } from '@odyssey-theme/components';
+import Layout from '../layouts/Page.astro';
+import HeroSection from '../components/sections/heros/HeroSection.astro';
+
+const seo = {
+	title: 'About | StartOps',
+	description: 'About Page',
+};
+---
+
+<Layout {seo}>
+  <StickyTextImageSection>
+    <div slot="text-container">
+      <h3>About StartOps</h3>
+      <p>
+        StartOps is a boutique consulting firm that helps startups and small businesses focus more on their business and less on their infrastructure.
+        We specialize in optimizing Software Delivery Performance and Site Reliability.
+      </p>
+    </div>
+     <picture slot="image-container">
+      <img
+      src="/assets/images/about/inside-hero.jpg"
+      alt="A team of people working on building a plant."
+      />
+    </picture>
+  </StickyTextImageSection>
+
+  <StickyTextImageSection reversed>
+    <div slot="text-container">
+      <h4>Jim Park: Principal Consultant</h4>
+      <p>Having spent too much time at work and not enough time hiking through the mountains with his young son, Jim's dad tragically died at 42.
+        In honor of his father, Jim developed a career around building tools to enable others to be more effective with their time and focus. 
+        Jim has worked with many Silicon Valley companies to improve their Software Delivery Performance and Site Reliability to achieve this goal. 
+        When not in the office, Jim can be found at the park trying to train his cats to wear leashes.</p>
+
+    <p></p>
+    </div>
+     <picture slot="image-container">
+      <img
+      src="/assets/images/about/jim-park-portrait.png"
+      alt="A portrait of Jim Park, his wife, and their two cats. The cats are not wearing leashes, but given the expression on their faces, they probably should be."
+      />
+    </picture>
+  </StickyTextImageSection>
+</Layout>

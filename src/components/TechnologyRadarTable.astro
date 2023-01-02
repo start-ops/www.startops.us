@@ -1,0 +1,99 @@
+---
+
+export interface Props {
+  name: string;
+  description?: string;
+  icon?: string;
+  url?: string;
+  assessment: 'adopt'|'trial'|'assess'|'hold';
+  maturity: 'genesis'|'custom'|'product'|'commodity';
+  eval_notes?: string;
+}
+
+const {radar} = Astro.props;
+const adopt_genesis = radar.filter(({assessment, maturity}) => assessment === 'adopt' && maturity === 'genesis');
+const adopt_custom = radar.filter(({assessment, maturity}) => assessment === 'adopt' && maturity === 'custom');
+const adopt_product = radar.filter(({assessment, maturity}) => assessment === 'adopt' && maturity === 'product');
+const adopt_commodity = radar.filter(({assessment, maturity}) => assessment === 'adopt' && maturity === 'commodity');
+---
+<table class="radartable">
+  <tbody>
+    <tr>
+      <th class="radartable-header"></th>
+      <th class="radartable-header">Genesis</th>
+      <th class="radartable-header">Custom Built</th>
+      <th class="radartable-header">Product</th>
+      <th class="radartable-header">Commodity</th>
+    </tr>
+    <tr class="radartable-adopt">
+      <th>Adopt</th>
+      <td>
+        {adopt_genesis.map((item) => (
+          <>
+          <a href={item.url}>{item.name}</a>
+          </>
+        ))}
+      </td>
+      <td>
+        {adopt_custom.map((item) => (
+          <>
+          <li><a href={item.url}>{item.name}</a></li>
+          </>
+        ))}
+      </td>
+      <td>
+        {adopt_product.map((item) => (
+          <>
+          <a href={item.url}>{item.name}</a>
+          </>
+        ))}
+      </td>
+      <td>
+        {adopt_commodity.map((item) => (
+          <>
+          <a href={item.url}>{item.name}</a>
+          </>
+        ))}
+      </td>
+    </tr>
+    <tr class="radartable-trial">
+      <th>Trial</th>
+    </tr>
+    <tr class="radartable-assess">
+      <th>Assess</th>
+    </tr>
+    <tr class="radartable-hold">
+      <th>Hold</th>
+      <td></td>
+      <td>{radar}</td>
+    </tr>
+  </tbody>
+</table>
+
+<style>
+  .radartable {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100vw;
+    text-align: center;
+  }
+  .radartable-header {
+    width: 20vw;
+  }
+  .radartable-adopt {
+    background-color: #30f530;
+    height: 10vw;
+  }
+  .radartable-trial {
+    background-color: #30b530;
+    height: 10vw;
+  }
+  .radaratable-assess: {
+    background-color: #30d530;
+    height: 10vw;
+  }
+	.radartable-hold {
+		background-color: red;
+    height: 10vw;
+	}
+</style>

@@ -4,12 +4,12 @@ import { Container } from '@odyssey-theme/components';
 
 <Container>
 	<section class="hero-section__section">
-		<div class="hero-section__text">
-			<slot name="text-container"></slot>
-		</div>
 		<div class="hero-section__image">
 			<slot name="image-container">
 			</slot>
+		</div>
+		<div class="hero-section__text">
+			<slot name="text-container"></slot>
 		</div>
 	</section>
 </Container>
@@ -24,8 +24,8 @@ import { Container } from '@odyssey-theme/components';
 		gap: 1rem;
 	}
 	.hero-section__text {
-		justify-self: center;
-		max-width: 25rem;
+		justify-self: left;
+		max-width: 55rem;
 	}
 	.hero-btns__container {
 		display: flex;

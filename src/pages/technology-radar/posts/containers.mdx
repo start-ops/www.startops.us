@@ -1,0 +1,52 @@
+---
+layout: '../../../layouts/TechnologyRadarPost.astro'
+title: Containers
+description: Containers
+publishDate: Aug 30, 2022
+featuredImage: '/assets/images/technology-radar/containers/container-ship-midmorning.png'
+excerpt: 'There are a number of techniques to perform process isolation. Two broad patterns that are popular today: Containers and Buildpacks.'
+tags: ['Docker', 'containers']
+radar:
+- name: Docker
+  assessment: adopt
+  maturity: commodity
+  eval_notes: Due to broad community adoption, Docker has achieved Commodity status. The technology is highly integrated with most processes and is our recommendation for Process Isolation.
+  description: Docker is a technology that enables developers to create and run applications on a containerized environment.
+  icon: /assets/images/technology-radar/docker.png
+  url: https://www.docker.com/
+- name: Functions / serverless
+  description: Functions allow you to write applications that are completely decoupled from the infrastructure they run on.
+  assessment: trial
+  maturity: product
+  eval_notes: I wouldn't build an entire application out of serverless functions, but serverless functions scale well, cost nothing when not running (they cost more than containers when running, so beware), and are well suited for plugging into work queues.
+- name: Buildpacks
+  description: Buildpacks are the fundamental technology for enabling fully managed PaaS solutions like Heroku and Cloud Foundry.
+  assessment: hold
+  maturity: product
+  eval_notes: The cost to learn Docker is outweighed by the benefits of faster deployment, and broad community support.
+
+---
+
+# Use case
+Containerization provides a means of packaging your application in a uniform way that permits scheduling across a dynamic pool of computers. The primary benefit to having a dynamic pool of computers as opposed to a fixed pool of computers is that you can outsource the maintenance of the dynamic pool. This is the property that enables cloud computing, where your application runs on some stranger's computer, because the interface between that computer and your application is highly standardized.
+
+Another property of containers is that much of the variables that can introduce bugs are baked into the image and are consistent from environment to environment. That means that if it works on your laptop, and it doesn't somewhere else, you only have to look at a couple known places, and not the entire stack of software.
+
+Said simply, Process Isolation provides a way for you to package your application so that it can run anywhere. This is useful because it means that your application can run on a stranger's computer (in the cloud). It also means that your application is less prone to runtime errors due to misconfiguration. 
+
+
+# Background
+
+You may not know that Docker is not the only way to containerize an application. In fact, you may be surprised to hear that [containers are not real things](https://blog.jessfraz.com/post/containers-zones-jails-vms/). 
+
+There are a number of techniques to perform process isolation. Two broad patterns that are popular today: Containers and Buildpacks.
+
+When folks say "containers," generally, they are referring to Docker and its ecosystem of projects, such as Kubernetes and others. Most cloud providers support Docker containers natively. Docker containers are "built" using a Dockerfile. In order to develop a Dockerfile, you must know how to plumb environment variables, secrets, networking, and build scripts. 
+
+Heroku, Cloud Foundry, and other Platforms as a Service (PaaS) offer specialized buildpacks that promise to make it easier to "build" an image. Most popular frameworks are built automatically using the buildpack. PaaS products offer a highly opinionated workflow and provide a framework for setting environment variables, secrets, and networking.
+
+Both technologies offer full container lifecycle management. They will both build an image, configure its environment, and schedule it across a worker pool. The major functional differences are in the build process. Docker builds images according to a user defined manifest: the Dockerfile. Buildpacks build images according to scripts that analyze the framework. Both result in a compressed image of the runtime. Only Docker however, builds an image that is comprised of layers. 
+
+Docker layers are one of the features that differentiate Docker. Each layer, represented by a single step in the Dockerfile, is just the set of differences from the layer before it. Leveraging this fact makes building images very efficient, because changes to later steps in the Dockerfile result in smaller changes to the overall image.
+
+This efficiency is one important reason why Docker saw such rapid adoption and has achieved Commodity status. 
