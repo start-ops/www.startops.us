@@ -1,0 +1,56 @@
+---
+
+const {skills} = Astro.props;
+
+---
+<template>
+  <div class="skill-tree">
+    <ul>
+			{skills.map(skill => (
+				<li key={skill.id}>
+					<div className="node">
+						{skill.title}
+					</div>
+					<ul>
+						{skill.chZildren.map(child => (
+							<li key={child.id}>
+								<div className="node">
+									{child.title}
+								</div>
+							</li>
+						))}
+					</ul>
+				</li>
+			))}
+    </ul>
+  </div>
+</template>
+
+<style>
+	.skill-tree {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.skill-tree ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	
+	.skill-tree .node {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80px;
+		height: 80px;
+		border: 1px solid #ccc;
+		border-radius: 50%;
+		cursor: pointer;
+		user-select: none;
+	}
+	</style>
